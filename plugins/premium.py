@@ -8,8 +8,8 @@ from datetime import timedelta
 from config import OWNER_ID
 from utils.func import add_premium_user, is_private_chat
 from pyrogram import filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from config import OWNER_ID
+from pyrogram.types import InlineKeyboardButton as IK, InlineKeyboardMarkup as IKM
+from config import OWNER_ID, JOIN_LINK as JL , ADMIN_CONTACT as AC
 import base64 as spy
 from utils.func import a1, a2, a3, a4, a5, a7, a8, a9, a10, a11
 from plugins.start import subscribe
@@ -93,13 +93,13 @@ async def start_handler(client, message):
     pb = getattr(tm, spy.b64decode(attr1.encode()).decode())
     fd = getattr(pb, spy.b64decode(attr2.encode()).decode())
 
-    keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton(b7, url=b9)],
-        [InlineKeyboardButton(b8, url=b10)]
+    kb = IKM([
+        [IK(b7, url=JL)],
+        [IK(b8, url=AC)]
     ])
 
     await getattr(message, b4)(
         fd,
         caption=b6,
-        reply_markup=keyboard
+        reply_markup=kb
     )
